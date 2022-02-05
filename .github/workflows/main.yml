@@ -19,8 +19,8 @@ jobs:
         # TODO: Maybe you want to always get the latest version
         # uses: gha-utilities/sass-build@master
         with:
-          source: src/scss/*.scss
-          destination: css/
+          source: ./src/scss/*.scss
+          destination: ./css/
 
       - name: Add and Commit changes to pr-pages branch
         run: |
