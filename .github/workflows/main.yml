@@ -25,7 +25,7 @@ jobs:
       - name: Compile HTML from PUG files
         run: |
           npm i -g pug-cli
-          pug src/pug/index.pug --out .
+          pug src/pug --out .
 
       - name: Add and Commit changes to pr-pages branch
         run: |
