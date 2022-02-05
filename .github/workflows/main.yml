@@ -16,8 +16,6 @@ jobs:
 
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.4.8
-        # TODO: Maybe you want to always get the latest version
-        # uses: gha-utilities/sass-build@master
         with:
           source: src/scss/main.scss
           destination: css/main.css
