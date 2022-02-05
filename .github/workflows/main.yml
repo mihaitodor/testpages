@@ -32,5 +32,6 @@ jobs:
           git config --local user.name 'GitHub Action'
           git add css/*
           git add articles/*
+          git add *.html
           git diff-index --quiet HEAD || git commit -m 'Update compiled files'
           git push
