@@ -19,13 +19,18 @@ jobs:
         # TODO: Maybe you want to always get the latest version
         # uses: gha-utilities/sass-build@master
         with:
-          source: ./src/scss/main.scss
-          destination: ./css/main.css
+          source: src/scss/main.scss
+          destination: css/main.css
+
+      - name: Compile HTML from PUG files
+        run: |
+          npm i -g pug-cli
+          pug src/pug/*.pug --out .
 
       - name: Add and Commit changes to pr-pages branch
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
           git add css/*
-          git commit -m 'Updates compiled CSS files'
+          git commit -m 'Update compiled CSS files'
           git push
