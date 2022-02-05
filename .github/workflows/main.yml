@@ -32,5 +32,6 @@ jobs:
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
           git add css/*
+          git add *.html
           git commit -m 'Update compiled CSS files'
           git push
