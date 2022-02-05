@@ -25,7 +25,7 @@ jobs:
       - name: Compile HTML from PUG files
         run: |
           npm i -g pug-cli
-          find src/pug/articles -type d -maxdepth 1 -mindepth 1 -exec pug {} --out articles \;
+          find src/pug/articles -type d -maxdepth 1 -mindepth 1 -exec bash -c 'pug $1 --out articles/${1##*/}' bash {} \;
 
       - name: Add and Commit changes to pr-pages branch
         run: |
