@@ -1,0 +1,31 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_css:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source Git branch
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.4.8
+        # TODO: Maybe you want to always get the latest version
+        # uses: gha-utilities/sass-build@master
+        with:
+          source: src/scss/*.scss
+          destination: css/
+
+      - name: Add and Commit changes to pr-pages branch
+        run: |
+          git config --local user.email 'action@github.com'
+          git config --local user.name 'GitHub Action'
+          git add css/*
+          git commit -m 'Updates compiled CSS files'
+          git push
