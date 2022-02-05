@@ -26,7 +26,7 @@ jobs:
           find src/pug/*.pug -type f -maxdepth 1 -exec pug {} --out . \;
           find src/pug/articles -type d -maxdepth 1 -mindepth 1 -exec bash -c 'pug $1 --out articles/${1##*/}' bash {} \;
 
-      - name: Add and Commit changes to pr-pages branch
+      - name: Add and commit changes to main branch
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
