@@ -22,10 +22,20 @@ jobs:
 
       - name: Compile HTML from PUG files
         run: |
-          npm i -g pug-cli
+          # Install pug
+          npm install -g --loglevel=silent pug-cli
+
+          # Compile top level html files
           if [ -d src/pug ]; then
             find src/pug/*.pug -type f -maxdepth 1 | xargs -I {} pug -b src/pug --out . {}
           fi
+
+          # Compile individual pages
+          if [ -d src/pug/pages ]; then
+            find src/pug/pages -type d -maxdepth 1 -mindepth 1 | xargs -I {} sh -c 'pug -b src/pug --out $(basename {}) {}'
+          fi
+
+          # Compile articles
           if [ -d src/pug/articles ]; then
             find src/pug/articles -type d -maxdepth 1 -mindepth 1 | xargs -I {} sh -c 'pug -b src/pug --out articles/$(basename {}) {}'
           fi
