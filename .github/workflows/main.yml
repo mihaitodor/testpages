@@ -22,8 +22,10 @@ jobs:
 
       - name: Compile HTML from PUG files
         run: |
-          # Install pug
-          npm install -g --loglevel=silent pug-cli
+          # Install pug and gomplate
+          npm install -g --loglevel=silent pug-cli gomplate
+
+          go version
 
           # Compile top level html files
           if [ -d src/pug ]; then
