@@ -30,6 +30,11 @@ jobs:
             find src/pug/*.pug -type f -maxdepth 1 | xargs -I {} pug -b src/pug --out . {}
           fi
 
+          # Compile desserts
+          if [ -d src/pug/desserts ]; then
+            gomplate -c .=src/pug/desserts/desserts.json --plugin pug=src/scripts/pug_wrapper.sh -t pug_templ=src/pug/desserts/_desserts.pug.templ -f src/pug/templ/gomplate/_desserts.templ
+          fi
+
           # Compile individual pages
           if [ -d src/pug/pages ]; then
             find src/pug/pages -type d -maxdepth 1 -mindepth 1 | xargs -I {} sh -c 'pug -b src/pug --out $(basename {}) {}'

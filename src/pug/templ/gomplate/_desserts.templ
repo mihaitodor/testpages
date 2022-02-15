@@ -1,0 +1,5 @@
+{{- range $page := . -}}
+{{- $filename := print (strings.Slug $page.name) ".html" }}
+{{- $outPath := path.Join "desserts" $page.date $filename }}
+{{- tmpl.Exec "pug_templ" $page | pug | file.Write $outPath }}
+{{- end -}}
