@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 1
 
       - name: Compile CSS from SCSS files
-        uses: gha-utilities/sass-build@v0.4.10
+        uses: gha-utilities/sass-build@5100f7b0efc3128968365f145fb324b6ed5176e4
         with:
           source: src/scss/main.scss
           destination: css/main.css
