@@ -42,6 +42,7 @@ jobs:
 
           # Compile articles
           if [ -d src/pug/articles ]; then
+            gomplate -f src/pug/articles/index.pug.templ | pug -P -b src/pug > articles/index.html
             find src/pug/articles -type d -maxdepth 1 -mindepth 1 | xargs -I {} sh -c 'pug -b src/pug --out articles/$(basename {}) {}'
           fi
       - name: Add and commit changes to main branch
