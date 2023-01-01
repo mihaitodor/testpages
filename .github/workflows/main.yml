@@ -9,13 +9,13 @@ jobs:
 
     steps:
       - name: Checkout source Git branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: main
           fetch-depth: 1
 
       - name: Compile CSS from SCSS files
-        uses: gha-utilities/sass-build@v0.4.8
+        uses: gha-utilities/sass-build@v0.4.10
         with:
           source: src/scss/main.scss
           destination: css/main.css
