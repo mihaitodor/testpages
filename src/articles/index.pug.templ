@@ -9,7 +9,7 @@ block header
 
 block content
 	main
-		p boo ya!
+		p boo ya!!!
 		p
 			{{- range file.Walk "src/articles" }}
 			{{- if and (not (file.IsDir .)) (eq (filepath.Ext .) ".pug") }}
